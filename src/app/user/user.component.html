@@ -1,1 +1,5 @@
-<h1 class="neonText">{{ user.firstName }} {{ user.lastName }}</h1>
+<div *ngIf="loading">...</div>
+<div *ngIf="error">Erreur : Cet utilisateur n'existe pas.</div>
+<div *ngIf="user">
+  <h1 class="neonText">{{ user.firstName }} {{ user.lastName }}</h1>
+</div>
