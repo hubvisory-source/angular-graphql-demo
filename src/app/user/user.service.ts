@@ -14,7 +14,7 @@ const GET_USER_QUERY = gql`
 `;
 
 export type User = {
-  id: number;
+  id: string;
   firstName: string;
   lastName: string;
 };
@@ -30,7 +30,12 @@ export interface UserQueryResponse {
 export class UserService {
   constructor(private apollo: Apollo) {}
 
-  getUserFromId(id: number): Observable<ApolloQueryResult<UserQueryResponse>> {
+  getUserFromId(id: string): Observable<ApolloQueryResult<UserQueryResponse>> {
+    const userObservable = this.apollo.watchQuery<UserQueryResponse>({
+      query: GET_USER_QUERY,
+      variables: { id: id },
+    }).valueChanges;
+    console.log(userObservable);
     return this.apollo.watchQuery<UserQueryResponse>({
       query: GET_USER_QUERY,
       variables: { id: id },
