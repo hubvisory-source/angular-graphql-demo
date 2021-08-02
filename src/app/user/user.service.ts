@@ -31,11 +31,6 @@ export class UserService {
   constructor(private apollo: Apollo) {}
 
   getUserFromId(id: string): Observable<ApolloQueryResult<UserQueryResponse>> {
-    const userObservable = this.apollo.watchQuery<UserQueryResponse>({
-      query: GET_USER_QUERY,
-      variables: { id: id },
-    }).valueChanges;
-    console.log(userObservable);
     return this.apollo.watchQuery<UserQueryResponse>({
       query: GET_USER_QUERY,
       variables: { id: id },
