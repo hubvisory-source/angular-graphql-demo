@@ -3,7 +3,7 @@ import { Apollo } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { ApolloQueryResult, gql } from '@apollo/client/core';
 
-const GET_USER_QUERY = gql`
+export const GET_USER_QUERY = gql`
   query ($id: String!) {
     user(id: $id) {
       id
